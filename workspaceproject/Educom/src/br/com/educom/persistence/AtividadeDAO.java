@@ -1,7 +1,8 @@
 package br.com.educom.persistence;
 
 import java.sql.Connection;
-import java.sql.Date;
+
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class AtividadeDAO {
 			pstm = conn.prepareStatement(sql);
 			pstm.setString(1, atividade.getDescricao());
 			pstm.setDouble(2, atividade.getNota());
-			pstm.setDate(3, (Date) atividade.getDataEntrega());
+			pstm.setDate(3,(java.sql.Date) atividade.getDataEntrega());
 			pstm.execute();
 			
 		} catch (Exception e) {
@@ -105,7 +106,7 @@ public class AtividadeDAO {
 		 //Adicionar o valor do segundo parâmetro da sql
 		 pstm.setDouble(2, atividade.getNota());
 		 //Adiciona o valor do terceiro parâmetro da sql
-		 pstm.setDate(3, new Date(atividade.getDataEntrega().getTime()));
+		 pstm.setDate(3, (java.sql.Date) new Date(atividade.getDataEntrega().getTime()));
 		 
 		 pstm.setString(4, atividade.getTipo());
 		 
